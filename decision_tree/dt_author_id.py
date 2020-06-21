@@ -24,6 +24,17 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+from sklearn.tree import DecisionTreeClassifier
+
+dtree = DecisionTreeClassifier(min_samples_split=40)
+print len(features_train[0])
+t0 = time()
+dtree.fit(features_train, labels_train)
+print "training time:", round(time()-t0, 3), "s"
+t0 = time()
+#dtree.predict(features_test)
+print "predict time:", round(time()-t0, 3), "s"
+print dtree.score(features_test, labels_test) 
 
 
 #########################################################
