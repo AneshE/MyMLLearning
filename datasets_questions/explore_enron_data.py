@@ -26,6 +26,8 @@ sum = 0
 poi = 0
 salary = 0
 email = 0
+paymentNaN = 0
+poiPaymentNaN = 0
 for (key, value) in enron_data.items():
     #print value["salary"]
     if value["poi"]:
@@ -33,10 +35,14 @@ for (key, value) in enron_data.items():
         if (names.find(key.split(' ')[1].strip())) > 0 :
             #print key
             poi+=1
+        if value["total_payments"] == "NaN":
+            poiPaymentNaN +=1
     if value["salary"] != "NaN":
         salary+=1
     if value["email_address"] != "NaN":
         email +=1
+    if value["total_payments"] == "NaN":
+        paymentNaN +=1
 print sum
 print poi
 print enron_data["PRENTICE JAMES"]["total_stock_value"]
@@ -47,3 +53,5 @@ print enron_data["FASTOW ANDREW S"]["total_payments"]
 print enron_data["SKILLING JEFFREY K"]["total_payments"]
 print salary
 print email
+print paymentNaN
+print poiPaymentNaN
